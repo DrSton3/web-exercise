@@ -1,0 +1,194 @@
+:root {
+  --navy: #0a0630;
+  --blue: #2a8bd3;
+  --blue-dark: #247cbf;
+  --pink: #ecb4e6;
+  --white: #fff;
+  --text-dark: #1b1b1b;
+  --app-max: 520px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { min-height: 100%; }
+
+body {
+  font-family: "Roboto", system-ui, sans-serif;
+  background: #121212;
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: var(--app-max);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--blue);
+  box-shadow: 0 0 40px rgba(0,0,0,.5);
+}
+
+/* ---------- Header ---------- */
+.topbar {
+  background: var(--navy);
+  padding: calc(env(safe-area-inset-top) + 1.4rem) 1rem 1.2rem;
+  text-align: center;
+}
+.topbar h1 {
+  font-family: "Roboto Slab", serif;
+  font-size: clamp(1.25rem, 4.5vw, 1.6rem);
+  letter-spacing: .01em;
+}
+
+/* ---------- Card area with watermark ---------- */
+.card {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: clamp(1rem, 4vw, 1.75rem);
+  background-color: var(--blue);
+  /* Repeating watermark text, offset every other row like the original */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='68'%3E%3Cg font-family='Arial Black,Arial' font-weight='900' font-size='26' fill='%23247cbf'%3E%3Ctext x='0' y='26'%3ESTUDY%3C/text%3E%3Ctext x='-100' y='60'%3ESTUDY%3C/text%3E%3Ctext x='100' y='60'%3ESTUDY%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-size: clamp(140px, 32vw, 200px) auto;
+  overflow: hidden;
+}
+
+.sample-tag {
+  position: absolute;
+  top: .6rem;
+  right: .6rem;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  background: rgba(10,6,48,.55);
+  padding: .25rem .5rem;
+  border-radius: 999px;
+}
+
+/* ---------- Photo ---------- */
+.photo-frame {
+  width: clamp(170px, 41vw, 240px);
+  aspect-ratio: 1.02;
+  padding: 7%;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #2c5e86 0%, #0d2740 12%, #6aa3cf 55%, #cfe2f2 72%, #2f6c9e 100%);
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+}
+.photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #7fb6e6 0%, #cfe3f3 60%, #d9b98a 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.photo svg { width: 80%; fill: #2e2e33; }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Text ---------- */
+.details {
+  text-align: center;
+  margin-top: clamp(1.2rem, 5vw, 2rem);
+  padding: 0 1rem;
+  line-height: 1.2;
+}
+.surname, .firstname { font-size: clamp(1.9rem, 7vw, 2.6rem); }
+.dob { font-size: clamp(1.15rem, 4.2vw, 1.5rem); margin-top: .15rem; }
+.school { font-size: clamp(1.1rem, 4.2vw, 1.45rem); margin-top: .9rem; }
+.status {
+  font-size: clamp(1.9rem, 7vw, 2.5rem);
+  font-weight: 700;
+  margin-top: .8rem;
+}
+.period { font-size: clamp(1.2rem, 4.5vw, 1.55rem); margin-top: .1rem; }
+
+/* ---------- Partner band ---------- */
+.partners {
+  width: 100%;
+  margin-top: clamp(1.2rem, 5vw, 1.9rem);
+  padding: clamp(2rem, 7vw, 2.8rem) 4%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0) 0%, #fff 22%, #fff 78%, rgba(255,255,255,0) 100%);
+}
+.partner { font-weight: 700; white-space: nowrap; }
+.partner-a { color: #1d3e8a; font-size: clamp(1.1rem, 4.5vw, 1.6rem); }
+.partner-b {
+  color: #5cbf2a;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-style: italic;
+  font-size: clamp(1.6rem, 7vw, 2.4rem);
+}
+.partner-c {
+  position: relative;
+  color: #1b2656;
+  font-size: clamp(.75rem, 2.8vw, .95rem);
+  display: grid;
+  place-items: center;
+}
+.partner-c .ring {
+  position: absolute;
+  width: 3.8em; height: 3.8em;
+  border: .45em solid #1b2656;
+  border-radius: 50%;
+  clip-path: polygon(0 0,100% 0,100% 38%,0 38%,0 62%,100% 62%,100% 100%,0 100%);
+}
+
+/* ---------- Info bar ---------- */
+.infobar {
+  background: var(--white);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 1.1rem;
+}
+.timestamp { font-size: clamp(1rem, 3.8vw, 1.3rem); }
+.icon-btn {
+  background: none;
+  border: 0;
+  color: var(--text-dark);
+  width: 2.2rem; height: 2.2rem;
+  cursor: pointer;
+}
+.icon-btn svg { width: 100%; height: 100%; }
+.icon-btn:first-child svg { fill: currentColor; }
+
+/* ---------- Bottom nav ---------- */
+.bottomnav {
+  background: var(--navy);
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem .5rem calc(env(safe-area-inset-bottom) + 1.4rem);
+}
+.bottomnav a {
+  width: clamp(52px, 12vw, 66px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--pink);
+  color: #4a1f4a;
+  display: grid;
+  place-items: center;
+  transition: transform .15s;
+}
+.bottomnav a:hover { transform: scale(1.05); }
+.bottomnav a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.bottomnav a.active { background: #fbeff9; }
+.bottomnav svg { width: 50%; height: 50%; }
+
+/* ---------- Larger screens: show as a centered phone ---------- */
+@media (min-width: 600px) {
+  body { min-height: 100dvh; padding: 2rem 0; }
+  .app { min-height: auto; margin: auto 0; border-radius: 28px; overflow: hidden; }
+  .card { padding-bottom: 6rem; }
+}
